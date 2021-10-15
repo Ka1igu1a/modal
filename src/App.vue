@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="w-full flex justify-center mt-[10rem]">
+    <button
+      @click="isOpen = true"
+      v-if="!isOpen"
+      class="
+        border
+        rounded-full
+        border-blue-700
+        text-blue-700
+        hover:shadow-lg
+        p-[1rem]
+        focus:outline-none
+      "
+    >
+      Open modal
+    </button>
+  </div>
+  <AppModal v-if="isOpen" :isOpen="isOpen" @aa="isOpen = false" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import AppModal from "@/components/AppModal.vue";
 
 export default {
-  name: "App",
   components: {
-    HelloWorld,
+    AppModal,
+  },
+  name: "App",
+  data() {
+    return {
+      isOpen: false,
+    };
   },
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
