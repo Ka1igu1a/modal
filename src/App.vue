@@ -1,8 +1,9 @@
 <template>
-  <div class="w-full flex justify-center mt-[10rem]">
+  <div
+  v-if="!isOpen" 
+  class="w-full flex justify-center mt-[10rem]">
     <button
       @click="isOpen = true"
-      v-if="!isOpen"
       class="
         border
         rounded-full
@@ -16,23 +17,31 @@
       Open modal
     </button>
   </div>
-  <AppModal v-if="isOpen" :isOpen="isOpen" @aa="isOpen = false" />
+  <AppModal v-if="isOpen" :isOpen="isOpen" @close="isOpen = false">
+    <template v-slot:validator>
+      <AppModalValidator :validPhrase="validPhrase"/>
+    </template>
+  </AppModal>
 </template>
 
 <script>
 import AppModal from "@/components/AppModal.vue";
+import AppModalValidator from "@/components/AppModalValidator.vue";
+
 
 export default {
   components: {
     AppModal,
+    AppModalValidator
   },
   name: "App",
   data() {
     return {
       isOpen: false,
+      validPhrase: 'my password',
     };
   },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped></style>

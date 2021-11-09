@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <div class="absolute top-81 left-1/3 z-60">
-      <div class="bg-light-50 w-[25rem] h-[25rem]">sa</div>
+  <!-- Background -->
+  <div
+  @click.self="$emit('close')"
+  class="fixed w-full h-full bg-red-600 flex justify-center pt-[10rem] cursor-pointer">
+    <!-- Content -->
+    <div class="w-[30rem] h-[30rem] bg-light-100 cursor-default shadow-lg">
+      <slot name="validator"></slot>
     </div>
-
-    <div
-      @click="$emit('aa')"
-      class="bg-gray-200 w-full h-full absolute top-0 cursor-pointer"
-    ></div>
   </div>
 </template>
 
@@ -23,4 +22,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped="scss"></style>
+<style lang="scss" scoped></style>
